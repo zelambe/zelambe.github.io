@@ -6,6 +6,8 @@ $link-hover: #f786eb;
 $background: #140917;
 $text: #b59cbe;
 $title: #e0c8e9;
+$mobile-menu-outline: rgba(181, 156, 190, 0.5);
+$body-filter: rgba(181, 156, 190, 0.4);
 
 :root {
   font-size: 18px;
@@ -196,23 +198,28 @@ footer {
     max-width: 65%;
     align-self: center;
     justify-self: center;
+    z-index: 0;
   }
 
   .mobile-header {
     top: 0;
     left: 0;
     margin: 0;
-    height: 3rem;
+    z-index: 2;
+    height: 1.5rem;
     width: 100%;
     position: fixed;
     background-color: $background;
   }
 
   .mobile-header-items {
+    z-index: 0;
     list-style: none;
     display: flex;
     justify-content: center;
     background: $background;
+    margin-bottom: 0;
+    padding-bottom: 0.1rem;
   }
 
   .mobile-header-item {
@@ -221,14 +228,83 @@ footer {
   }
 
   .mobile-title {
-    align-self: center;
-    font-size: 2rem;
+    align-self: auto;
+    font-size: 1.5rem;
     color: $link;
   }
 
   .menu-toggle {
     margin-left: auto;
     padding-right: 2rem;
+  }
+
+  .menu-dropdown-toggle {
+    position: absolute;
+    padding-right: 2rem;
+    transform: scale(5);
+    z-index: 3;
+    color: $title;
+    opacity: 0;
+  }
+
+  .dropdown-item {
+    font-size: 1.5rem;
+    z-index: 4;
+    text-align: center;
+    padding-right: 1.5rem;
+    list-style: none;
+    padding-top: 1.2rem;
+    padding-bottom: 1.2rem;
+    margin-right: 0.5rem;
+  }
+
+  .menu-dropdown {
+    display: none;
+    margin-right: 0;
+    margin-left: 60%;
+    background: $background;
+    border-style: solid;
+    border-color: $mobile-menu-outline;
+    border-width: 0.3px;
+    border-top: 0;
+    border-right: 0;
+    box-shadow: 0 2px 2px $mobile-menu-outline;
+  }
+
+  .dropdown-list {
+    margin-top: 0;
+    margin-bottom: auto;
+    transition-property: all;
+    transition-duration: 0.6s;
+  }
+
+  .dropdown-list::selection {
+    margin-top: 0;
+    margin-bottom: auto;
+    transition-property: all;
+    transition-duration: 0.6s;
+  }
+
+  #overlay {
+    visibility: hidden;
+    opacity: 0;
+    transition-property: all;
+    transition-duration: 0.25s;
+    transition-timing-function: ease;
+    z-index: 1;
+    background-color: $body-filter;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+  #overlay.overlay-transition {
+    visibility: visible;
+    opacity: 1;
+    transition-property: visibility;
+    transition-duration: 2s;
+    transition-timing-function: linear;
   }
 }
 

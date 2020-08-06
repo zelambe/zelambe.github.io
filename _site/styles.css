@@ -51,12 +51,19 @@ footer { grid-area: footer; display: flex; align-content: center; justify-conten
 @media only screen and (max-width: 768px) { .nav { display: none; }
   .menu-toggle-icon { fill: #f25ce3; }
   main { padding-top: 5rem; display: flex; flex-direction: column; margin: 1rem; align-content: center; justify-content: center; }
-  img { max-width: 65%; align-self: center; justify-self: center; }
-  .mobile-header { top: 0; left: 0; margin: 0; height: 3rem; width: 100%; position: fixed; background-color: #140917; }
-  .mobile-header-items { list-style: none; display: flex; justify-content: center; background: #140917; }
+  img { max-width: 65%; align-self: center; justify-self: center; z-index: 0; }
+  .mobile-header { top: 0; left: 0; margin: 0; z-index: 2; height: 1.5rem; width: 100%; position: fixed; background-color: #140917; }
+  .mobile-header-items { z-index: 0; list-style: none; display: flex; justify-content: center; background: #140917; margin-bottom: 0; padding-bottom: 0.1rem; }
   .mobile-header-item { justify-self: center; padding: 0.5rem; }
-  .mobile-title { align-self: center; font-size: 2rem; color: #f25ce3; }
-  .menu-toggle { margin-left: auto; padding-right: 2rem; } }
+  .mobile-title { align-self: auto; font-size: 1.5rem; color: #f25ce3; }
+  .menu-toggle { margin-left: auto; padding-right: 2rem; }
+  .menu-dropdown-toggle { position: absolute; padding-right: 2rem; transform: scale(5); z-index: 3; color: #e0c8e9; opacity: 0; }
+  .dropdown-item { font-size: 1.5rem; z-index: 4; text-align: center; padding-right: 1.5rem; list-style: none; padding-top: 1.2rem; padding-bottom: 1.2rem; margin-right: 0.5rem; }
+  .menu-dropdown { display: none; margin-right: 0; margin-left: 60%; background: #140917; border-style: solid; border-color: rgba(181, 156, 190, 0.5); border-width: 0.3px; border-top: 0; border-right: 0; box-shadow: 0 2px 2px rgba(181, 156, 190, 0.5); }
+  .dropdown-list { margin-top: 0; margin-bottom: auto; transition-property: all; transition-duration: 0.6s; }
+  .dropdown-list::selection { margin-top: 0; margin-bottom: auto; transition-property: all; transition-duration: 0.6s; }
+  #overlay { visibility: hidden; opacity: 0; transition-property: all; transition-duration: 0.25s; transition-timing-function: ease; z-index: 1; background-color: rgba(181, 156, 190, 0.4); position: fixed; top: 0; left: 0; width: 100%; height: 100%; }
+  #overlay.overlay-transition { visibility: visible; opacity: 1; transition-property: visibility; transition-duration: 2s; transition-timing-function: linear; } }
 @media only screen and (min-width: 768px) { .mobile-header { display: none; }
   .my-picture { grid-area: picture; width: 80%; height: auto; justify-self: end; padding: 2rem; padding-bottom: 0; border-style: solid; border-color: #f25ce3; border-left: none; border-top: none; border-bottom: none; border-width: 1px; }
   main { margin-top: 0; margin-left: 1rem; margin-right: 1rem; padding-top: 7rem; padding-right: 2rem; display: grid; grid-template-areas: "picture  bio" "contact  bio" "footer   footer"; grid-template-columns: 1.75fr 2fr; gap: 0 2rem; align-items: center; justify-items: center; } }
